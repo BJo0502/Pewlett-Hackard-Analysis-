@@ -46,4 +46,31 @@ After conducting SQL queries we are able to create additional data tables that w
     plt.ylabel("Count Eligible to Retire",size=10)
     plt.title("Employees Eligible to Retire from Pewlett Hackard",size=15)
     plt.show()
+    
+## Summary
+
+### How many roles will need to be filled as the "silver tsunami" begins to make an impact? 
+
+Assuming Pewlett Hackard wants to maintain the current size of the company and if all eligible employees retire, they will need to hire 90,398 new employees.
+
+### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees? 
+To dig into this question we can write additional SQL queries to examine information about employees that are not eligible for retirement. We can compare the eligible employees to those that are not yet eligible using the following SQL query:
+
+    SELECT DISTINCT ON (employees.emp_no)
+    employees.emp_no,
+    employees.first_name,
+    employees.last_name,
+    titles.title,
+    titles.from_date,
+    titles.to_date
+    INTO not_eligible
+    FROM employees
+    LEFT JOIN titles
+    ON employees.emp_no = titles.emp_no
+    WHERE (birth_date NOT BETWEEN '1952-01-01' AND '1955-12-31')
+    ORDER BY employees.emp_no, titles.to_date DESC;
+    SELECT * FROM not_eligible;
+
+After creating this query we can use  matplotlib and create a stacked barchart to compare our results:
+![Employees Eligible to Retire vs Not Eligible](https://user-images.githubusercontent.com/88041368/134998083-17c0a338-1064-421f-a441-bd307c0807ac.png)
   
