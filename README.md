@@ -8,7 +8,7 @@ As a new employee with Pewett Hackard, we are tasked to help our coworker Bobby 
 SQL, pgAdmin4, VS Code, Jupyter Notebooks, Matplotlib, Pandas
 
 ## Results
-After conducting the SQL queries we are able to gain the following information about the employees eligible for retirement:
+After conducting SQL queries we are able to create additional data tables that we can further explore to gain insights regarding the impacts of future retirements. For the purpose of this data analysis, we can use pandas and matplotlib to further explore our results:
 
 1.) There are 1549 employees who are eligible to participate in a mentorship program.
 
@@ -17,7 +17,9 @@ After conducting the SQL queries we are able to gain the following information a
 3.) Of the employees eligible for retirement, the minimum start year with the company is 1985 and the maximum start year is 2002.
 
 4.) The employee titles that will experience the most significant impact after a wave retirement will likely by Senior Engineer and Senior Staff work roles.
-
+*Note that the range of employee counts per title are very wide spread. Since there are only 2 Managers, the bar does not display.*
+![retiring titles bar chart](https://user-images.githubusercontent.com/88041368/134998085-c973cd49-19d3-4999-a8c1-9054a13ab1bf.png)
+    
     Code 1:
     print(f'There are {len(mentor_df)} employees who are eligible to participate in a mentorship program.')
       
