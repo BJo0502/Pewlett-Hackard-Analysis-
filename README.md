@@ -74,3 +74,13 @@ To dig into this question we can write additional SQL queries to examine informa
 After creating this query we can use  matplotlib and create a stacked barchart to compare our results:
 ![Employees Eligible to Retire vs Not Eligible](https://user-images.githubusercontent.com/88041368/134998083-17c0a338-1064-421f-a441-bd307c0807ac.png)
   
+We can create an additional query to explore further how mentors by title compares to the amount of employees that remain not eligible. When we display both of these data frames we can see clearly that there simply are not going to be enough mentors per title. Of particular concern is that there will be no manager mentors available.
+    
+    SELECT COUNT(*), not_eligible.title 
+    INTO not_eligible_retiring_titles
+    FROM not_eligible
+    GROUP BY not_eligible.title
+    ORDER BY COUNT(*) DESC;
+    SELECT * FROM not_eligible_retiring_titles;
+    
+![mentors to not eligible employees](https://user-images.githubusercontent.com/88041368/134998084-519631d3-7970-4fa2-97c1-771d74d36a81.png)
